@@ -62,3 +62,15 @@ class ReviewRating(models.Model):
 
     def __str__(self):
         return self.subject
+
+class Event(models.Model):
+    event_name = models.TextField(max_length=500, blank=False)
+    price = models.IntegerField()
+    images = models.ImageField(upload_to='photos/events')
+    description = models.TextField(max_length=500, blank=True)
+    created_date = models.DateTimeField(auto_now_add=True)
+    modified_date = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.event_name
+
