@@ -199,7 +199,7 @@
                             <h3>{{ category.category_name }}</h3>
                         </div>
                         <div class="row gy-5">
-                            {% for product in products %} {% if product.category == category %}
+                            {% for product in products %}{% if product.category == category %}
                             <div class="col-lg-4 menu-item">
                                 <a href="{{ product.images.url }}" class="glightbox">
                                     <img src="{{ product.images.url }}" class="menu-img img-fluid" alt="">
@@ -233,7 +233,7 @@
                     <p>What Are They <span>Saying About Us</span></p>
                 </div>
 
-                <div class="slides-1 swiper" data-aos="fade-up" data-aos-delay="100">
+                <div class="slides-1 swiper" data-aos="fade-up" data-aos-delay="2000">
                     <div class="swiper-wrapper">
 
                         <div class="swiper-slide">

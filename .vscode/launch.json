@@ -5,10 +5,19 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "msedge",
+            "type": "firefox",
             "request": "launch",
-            "name": "Open home.html",
-            "file": "/home/khainn/Music/Django_Project/YummyShop/templates/home.html"
+            "reAttach": true,
+            "name": "Yummy",
+            "url": "http://127.0.0.1:8000/",
+            "webRoot": "${workspaceFolder}/YummyShop/",
+            "pathMappings": [
+                {
+                    "url": "http://127.0.0.1:8000",
+                    "path": "${workspaceFolder}/YummyShop/"
+                },
+
+            ]
         }
     ]
 }
