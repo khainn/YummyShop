@@ -47,7 +47,7 @@ def register(request):
                 request=request,
                 message="Please confirm your email address to complete the registration"
             )
-            return redirect('register')
+            return redirect('login')
         else:
             messages.error(request=request, message="Register failed!")
     else:

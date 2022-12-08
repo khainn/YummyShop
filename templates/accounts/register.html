@@ -2,54 +2,42 @@
 <!-- ========================= SECTION CONTENT ========================= -->
 <section class="section-content padding-y">
     <!-- ============================ COMPONENT REGISTER   ================================= -->
-    <div class="card mx-auto" style="max-width:520px; margin-top:40px;">
+    <div class="card mx-auto" style="max-width:520px; margin-top:100px;">
         <article class="card-body">
             {% include "includes/alerts.html" %}
             <header class="mb-4">
                 <h4 class="card-title">Sign up</h4>
             </header>
-            <form action="{% url 'register' %}" method="POST">
-                {% csrf_token %}
-                <div class="row g-6">
-                    <div class="col-md-6">
-                        <label>First name</label> {{ form.first_name }}
-                    </div>
-                    <!-- form-group end.// -->
-                    <div class="col-md-6">
-                        <label>Last name</label> {{ form.last_name }}
-                    </div>
-                    <!-- form-group end.// -->
+            <div class="main-agileinfo">
+                <div class="agileits-top">
+                    <form class="row g-3" action="{% url 'register' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="col-md-6">
+                            <label for="firstName" class="form-label">First name</label> {{ form.first_name }}
+                        </div>
+                        <div class="col-md-6">
+                            <label for="lastName" class="form-label">Last name</label> {{ form.last_name }}
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputEmail" class="form-label">Email</label> {{ form.email }}
+                        </div>
+                        <div class="col-md-6">
+                            <label for="phoneNumber" class="form-label">Phone number</label> {{ form.phone_number }}
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputPassword" class="form-label">Password</label> {{ form.password }}
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputPassword" class="form-label">Confirm password</label> {{ form.confirm_password }}
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary btn-block"> Register </button>
+                        </div>
+                        <!-- form-group// -->
+                        {{ form.email.errors }} {{ form.non_field_errors }}
+                    </form>
                 </div>
-                <!-- form-row end.// -->
-                <div class="row">
-                    <div class="col-md-6">
-                        <label>Email</label> {{ form.email }}
-                        <small class="form-text text-muted">We'll never share your email with anyone else.</small>
-                    </div>
-                    <!-- form-group end.// -->
-                    <div class="col-md-6">
-                        <label>Phone number</label> {{ form.phone_number }}
-                    </div>
-                    <!-- form-group end.// -->
-                </div>
-                <!-- form-row.// -->
-                <div class="row">
-                    <div class="col-md-6">
-                        <label>Create password</label> {{ form.password }}
-                    </div>
-                    <!-- form-group end.// -->
-                    <div class="col-md-6">
-                        <label>Repeat password</label> {{ form.confirm_password }}
-                    </div>
-                    <!-- form-group end.// -->
-                </div>
-                <p></p>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-block"> Register </button>
-                </div>
-                <!-- form-group// -->
-                {{ form.email.errors }} {{ form.non_field_errors }}
-            </form>
+            </div>
         </article>
         <!-- card-body.// -->
     </div>

@@ -5,19 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "firefox",
-            "request": "launch",
-            "reAttach": true,
             "name": "Yummy",
-            "url": "http://127.0.0.1:8000/",
-            "webRoot": "${workspaceFolder}/YummyShop/",
-            "pathMappings": [
-                {
-                    "url": "http://127.0.0.1:8000",
-                    "path": "${workspaceFolder}/YummyShop/"
-                },
-
-            ]
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/manage.py",
+            "args": [
+                "runserver"
+            ],
+            "django": true,
+            "justMyCode": true
         }
     ]
 }
