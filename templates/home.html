@@ -181,10 +181,16 @@
                 <ul class="nav nav-tabs d-flex justify-content-center" data-aos="fade-up" data-aos-delay="200">
 
                     {% for category in categoris %}
-                    <li class="nav-item">
+                    <li class="nav-item ">
+                        {% if category == categoris|first %}
+                        <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#menu-{{ category.category_name }}">
+                            <h4>{{ category.category_name }}</h4>
+                        </a>
+                        {% else %}
                         <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-{{ category.category_name }}">
                             <h4>{{ category.category_name }}</h4>
                         </a>
+                        {% endif %}
                     </li>
                     {% endfor %}
                     <!-- End tab nav item -->
@@ -192,8 +198,12 @@
                 </ul>
 
                 <div class="tab-content" data-aos="fade-up" data-aos-delay="300">
-                    {% for category in categoris %}
-                    <div class="tab-pane fade" id="menu-{{ category.category_name }}">
+                    {% for category in categoris %} {%if category == categoris|first %}
+                    <div class="tab-pane fade active show" id="menu-{{ category.category_name }}">
+                        {% else %}
+                        <div class="tab-pane fade" id="menu-{{ category.category_name }}">
+                            {% endif %}
+                        </div>
                         <div class="tab-header text-center">
                             <p>Menu</p>
                             <h3>{{ category.category_name }}</h3>

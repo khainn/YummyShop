@@ -62,7 +62,7 @@ def login(request):
     if request.method == "POST":
         email = request.POST.get('email')
         password = request.POST.get('password')
-        user = auth.authenticate(email=email, password=password)
+        user = auth.authenticate(username=email.split('@')[0], password=password)
         if user is not None:
             try:
                 cart = Cart.objects.get(cart_id=_cart_id(request))

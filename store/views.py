@@ -20,7 +20,7 @@ def store(request, category_slug=None):
 
     page = request.GET.get('page')
     page = page or 1
-    paginator = Paginator(products, 3)
+    paginator = Paginator(products, 6)
     paged_products = paginator.get_page(page)
     product_count = products.count()
 
