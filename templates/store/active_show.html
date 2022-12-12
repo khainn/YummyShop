@@ -1,0 +1,27 @@
+{% load static %}
+
+<div class="tab-header text-center">
+    <p>Menu</p>
+    <h3>{{ category.category_name }}</h3>
+</div>
+<div class="row gy-5">
+    {% for product in products %}{% if product.category == category %}
+    <div class="col-md-3">
+        <figure class="card card-product-grid">
+            <div class="img-wrap">
+                <img src="{{ product.images.url }}" />
+            </div>
+            <figcaption class="info-wrap">
+                <div class="fix-height">
+                    <a href="{{ product.get_url }}" class="title">{{ product.product_name }}</a>
+                    <div class="price-wrap mt-2">
+                        <span class="price">${{ product.price }}</span>
+                    </div>
+                </div>
+                <a href="{{ product.get_url }}" class="btn btn-block btn-primary">Add to cart</a>
+            </figcaption>
+        </figure>
+    </div>
+    {% endif %}{% endfor %}
+    <!-- Menu Item -->
+</div>
