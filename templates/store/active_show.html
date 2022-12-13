@@ -7,20 +7,43 @@
 <div class="row gy-5">
     {% for product in products %}{% if product.category == category %}
     <div class="col-md-3">
-        <figure class="card card-product-grid">
-            <div class="img-wrap">
-                <img src="{{ product.images.url }}" />
-            </div>
-            <figcaption class="info-wrap">
-                <div class="fix-height">
-                    <a href="{{ product.get_url }}" class="title">{{ product.product_name }}</a>
-                    <div class="price-wrap mt-2">
-                        <span class="price">${{ product.price }}</span>
-                    </div>
+        <form action= "add_cart" method="POST">
+            {% csrf_token %}
+            <figure class="card card-product-grid">
+                <div class="img-wrap">
+                    <img src="{{ product.images.url }}" />
                 </div>
-                <a href="{{ product.get_url }}" class="btn btn-block btn-primary">Add to cart</a>
-            </figcaption>
-        </figure>
+                <figcaption class="info-wrap">
+                    <div class="fix-height">
+                        <a href="{{ product.get_url }}" class="title">{{ product.product_name }}</a>
+                        <div class="price-wrap mt-2">
+                            <span class="price">${{ product.price }}</span>
+                        </div>
+                    </div>
+
+                    {% if product.stock > 0 %}
+                    {% if in_cart %}
+                    <button type="submit" class="btn btn-success">
+                        <span class="text">Add to cart</span>
+                        <i class="fas fa-check"></i>
+                    </button>
+                    {% comment %} <a href="{% url 'cart' %}" class="btn btn-outline-primary">
+                        <span class="text">Show cart</span>
+                        <i class="fas fa-eye"></i>
+                    </a> {% endcomment %}
+                    {% else %}
+                    <button type="submit" class="btn btn-primary">
+                        <span class="text">Add cart</span>
+                        <i class="fas fa-shopping-cart"></i>
+                    </button>
+                    {% endif %}
+                    {% else %}
+                    <h5 class="text-danger">Out of Stock</h5>
+                    {% endif %}
+
+                </figcaption>
+            </figure>
+        </form>
     </div>
     {% endif %}{% endfor %}
     <!-- Menu Item -->

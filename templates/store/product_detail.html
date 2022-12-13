@@ -23,29 +23,7 @@
                             </div>
                             <p>{{ single_product.description }}</p>
                             <hr>
-                            <div class="row">
-                                <div class="item-option-select">
-                                    <h6>Choose Color</h6>
-                                    <select name="color" class="form-select" required>
-                                        <option value="" disabled selected>Choose color</option>
-                                        {% for variation in single_product.variation_set.colors %}
-                                        <option value="{{ variation.variation_value | lower }}">{{ variation.variation_value | capfirst }}</option>
-                                        {% endfor %}
-                                    </select>
-                                </div>
-                            </div>
-                            <!-- row.// -->
-                            <div class="row">
-                                <div class="item-option-select">
-                                    <h6>Select storare</h6>
-                                    <select name="storage" class="form-select" required>
-                                        <option value="" disabled selected>Choose storare</option>
-                                        {% for variation in single_product.variation_set.storages %}
-                                        <option value="{{ variation.variation_value | lower }}">{{ variation.variation_value | capfirst }}</option>
-                                        {% endfor %}
-                                    </select>
-                                </div>
-                            </div>
+                        
                             <!-- row.// -->
                             <hr> 
                             {% if single_product.stock > 0 %} 
@@ -60,7 +38,7 @@
                             </a>
                             {% else %}
                             <button type="submit" class="btn btn-primary">
-                                <span class="text">Add to cart</span>
+                                <span class="text">Add cart</span>
                                 <i class="fas fa-shopping-cart"></i>
                             </button> 
                             {% endif %} 

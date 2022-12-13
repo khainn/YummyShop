@@ -2,14 +2,14 @@
 {% load static %}
 
 {% block content %}
-<section class="section-content padding-y bg">
+<section class="section-content padding-y bg " style="margin-top:100px;">
 	<div class="container">
 		<!-- ============================ COMPONENT 1 ================================= -->
 		{% if not cart_items %}
 		<h2 class="text-center">Your shopping cart is empty</h2>
 		<br />
 		<div class="text-center">
-			<a href="{% url 'store' %}" class="btn btn-primary">Continue Shopping</a>
+			<a href="{% url 'home' %}" class="btn btn-primary">Continue Shopping</a>
 		</div>
 		{% else %}
 		<div class="row">
