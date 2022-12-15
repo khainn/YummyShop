@@ -5,6 +5,24 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "firefox",
+            "request": "launch",
+            "reAttach": true,
+            "name": "FE_Yummy",
+            "url": "http://127.0.0.1:8000/",
+            "webRoot": "${workspaceFolder}/YummyShop",
+            "pathMappings": [
+                {
+                    "url": "http://127.0.0.1:8000/static/js",
+                    "path": "${workspaceFolder}/YummyShop/static/js"
+                },
+                {
+                    "url": "http://127.0.0.1:8000",
+                    "path": "${workspaceFolder}/YummyShop"
+                }
+            ]
+        },
+        {
             "name": "Yummy",
             "type": "python",
             "request": "launch",
@@ -14,6 +32,6 @@
             ],
             "django": true,
             "justMyCode": true
-        },
+        }
     ]
 }

@@ -5,6 +5,9 @@ from django.core.paginator import Paginator
 from carts.models import Cart, CartItem
 from carts.views import _cart_id
 from orders.models import OrderProduct
+from django.http import JsonResponse
+from rest_framework.response import Response
+from rest_framework import status
 
 def home(request):
     products = Product.objects.all().filter(is_available=True)
@@ -31,17 +34,13 @@ def home(request):
     return render(request, 'home.html', context=context)
 
 def add_cart(request):
-    if(request.method == "POST"):
+    is_ajax = request.headers.get('X-Requested-With') == 'XMLHttpRequest'
+    if(is_ajax and request.method == "POST"):
         current_user = request.user
-        product = Product.objects.get(id=16)    # Get object product
+        product_id = request.GET['product_id']
+        product = Product.objects.get(id=product_id)    # Get object product
         if current_user.is_authenticated:
-            for item in request.POST:
-                key = item
-                value = request.POST.get(key)
-                print("key: ", key)
-                print("value: ", value)
-
-        is_exists_cart_item = CartItem.objects.filter(product=product, user=current_user).exists()
+            is_exists_cart_item = CartItem.objects.filter(product=product, user=current_user).exists()
         
         if is_exists_cart_item:           
             cart_item = CartItem.objects.get(
@@ -56,4 +55,5 @@ def add_cart(request):
                     quantity=1
                 )
         cart_item.save()
+    return JsonResponse({'message': 'Update Cart unsuccessful!'}, status.HTTP_200_OK)
     
